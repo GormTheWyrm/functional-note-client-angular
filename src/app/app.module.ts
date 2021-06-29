@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FiddlepageComponent } from './pages/fiddlepage/fiddlepage.component';
 import { NoteComponent } from './components/note/note.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 //rootModule; AppModule is name by convention
 @NgModule({
@@ -22,7 +23,14 @@ import { FormsModule } from '@angular/forms';
   //import modules - can make my own
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'fiddle', component: FiddlepageComponent},
+      {path: 'data', component: DatapageComponent},
+      {path: 'home', component: CoverpageComponent},
+      {path: 'cover', component: CoverpageComponent},
+      {path: '', component: CoverpageComponent},
+    ])
   ],
   //services
   providers: [],
@@ -33,6 +41,7 @@ export class AppModule { }
 
 /*
 Angular topics I should know:
+0. explain bootstrapping
 1. how to set up a new component
 2. What is ng Module
 3. What is Angular

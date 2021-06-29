@@ -7,3 +7,9 @@
     margin-bottom: 0px;
     /* border-bottom: solid 10px red; */
 }
+a{
+    color: tomato;
+}
+.active-link{
+    color: crimson;
+}
