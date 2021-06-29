@@ -1,0 +1,7 @@
+.main-div{
+    padding: 1em;
+    background-color: black;
+    background-color: cadetblue;
+    /* background-color: darkslategray; */
+    min-height: 85vh;
+}

@@ -3,3 +3,6 @@
     padding: .5em;
     margin-bottom: 2px;
 }
+p{
+    white-space: pre-line;
+}
