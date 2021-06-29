@@ -1,0 +1,14 @@
+.background-div{
+background-color: black;
+/* margin: 0; */
+/* border-top: solid 10px red; */
+border-top:0px;
+padding: .5em;
+/* margin: 10px; */
+}
+.main-div{
+background-color: green;
+/* margin: 1em; */
+padding: .5em;
+/* margin-top: 0px; */
+}
