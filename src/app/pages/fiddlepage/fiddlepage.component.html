@@ -7,6 +7,8 @@
             a database.
         </p>
         <button id="new-note" (click)="openNote()">New Note</button>
+        <button id="new-note" (click)="saveAllToLocalStorage()">Save To LocalStorage</button>
+                
         <div *ngIf="noteOpen">
             <label for="new-note-title">Note Title</label>
             <br />
@@ -22,6 +24,6 @@
             <!-- appears to need an id for click event binding to work! -->
         </div>
         <!-- this div would be a great subcomponent- if I  -->
-        <app-note *ngFor="let note of notes" [note]="note"></app-note>
+        <app-note *ngFor="let note of notes" [note]="note" (noteDeleted)=deleteNote($event)></app-note>
     </div>
 </div>

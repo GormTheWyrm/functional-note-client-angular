@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './app/app.component';
 import { CoverpageComponent } from './pages/coverpage/coverpage.component';
 import { DatapageComponent } from './pages/datapage/datapage.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,6 +9,7 @@ import { FiddlepageComponent } from './pages/fiddlepage/fiddlepage.component';
 import { NoteComponent } from './components/note/note.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 //rootModule; AppModule is name by convention
 @NgModule({
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     DatapageComponent,
     HeaderComponent,
     FiddlepageComponent,
-    NoteComponent
+    NoteComponent,
+    PageNotFoundComponent
   ],
   //import modules - can make my own
   imports: [
@@ -30,6 +32,7 @@ import { RouterModule } from '@angular/router';
       {path: 'home', component: CoverpageComponent},
       {path: 'cover', component: CoverpageComponent},
       {path: '', component: CoverpageComponent},
+      {path: '**', component: PageNotFoundComponent}
     ])
   ],
   //services
