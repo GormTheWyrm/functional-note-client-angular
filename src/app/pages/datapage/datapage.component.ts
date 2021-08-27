@@ -14,14 +14,15 @@ export class DatapageComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-
+    this.getAllNotes();
     //load data from apiservice
-    this.api.getAllNote() //wip
-    .subscribe(res=>{
-      this.notes = res;
-    console.log(res);
+    // this.api.getAllNote() //wip
+    // .subscribe(res=>{
+    //   this.notes = res;
+    // console.log(res);
+    // }, err => {
 
-    })
+    // })//end subscribe block
   }
 
   deleteNote(id: number) {
@@ -56,7 +57,19 @@ export class DatapageComponent implements OnInit {
   } //fixme: no error handlign yet... also, fix backend
 
 
+getAllNotes(){
+  this.warning = "";//reset warning
+  this.api.getAllNote() //wip
+  .subscribe(res=>{
+    this.notes = res;
 
+  console.log(res);
+  }, err => {
+    console.log("error caught?");
+    console.log(err);
+    this.warning = "Could not retrieve data from database";
+  })//end subscribe block
+}
 
 
 }

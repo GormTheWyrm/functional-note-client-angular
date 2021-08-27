@@ -1,7 +1,14 @@
 <h3>DataBase Data</h3>
 <p>On this page user may interact with the database, adding, retrieving and deleting notes through the api service.</p>
 <app-note-form (noteCreation)="createNote($event)" *ngIf="noteOpen"></app-note-form>
-<br>
+<br/>
+<div *ngIf="warning" class="warning-div">
+    <p class="warning">{{warning}}</p>
+    <button (click)="getAllNotes()">Retry</button>
+    <!-- more specific button text? -->
+</div>
+
+<br/>
 <app-note [note]="note" *ngFor="let note of notes" (noteDeleted)="deleteNote($event)"></app-note>
-<p *ngIf="warning">{{warning}}</p>
+
 

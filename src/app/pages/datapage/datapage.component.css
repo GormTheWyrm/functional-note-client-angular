@@ -1,0 +1,8 @@
+.warning{
+    color: red;
+
+}
+.warning-div{
+    border: dashed 3px yellow;
+    padding: .5em;
+}
