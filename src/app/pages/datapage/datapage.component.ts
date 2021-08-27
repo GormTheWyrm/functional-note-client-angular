@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Note } from 'src/app/note';
 import { ApiService } from 'src/services/api.service';
 
@@ -7,10 +7,10 @@ import { ApiService } from 'src/services/api.service';
   templateUrl: './datapage.component.html',
   styleUrls: ['./datapage.component.css']
 })
-export class DatapageComponent implements OnInit {
-  notes: Note[] = [];//{id:1337, title: "placeholder", body:"legwork"}
+export class DatapageComponent implements OnInit { 
+  notes: Note[] = [];
   warning: string = "";
-  noteOpen:boolean = true;
+  noteOpen: boolean = true;
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
@@ -29,22 +29,29 @@ export class DatapageComponent implements OnInit {
     console.log(id);
     console.log("this should respond to note being deleted");
     /// WIP
+    this.api.deleteNote(id)
+      .subscribe(res => {
+        console.log(res); //null
+        //now need to remove data from notes...     
+        console.log(this.notes);
+      }); //id does not correspond with notes[id]... 
+    //... how to delete this or refresh/call api getall again
+
+    //load data from apiservice
+    this.api.getAllNote() //wip
+      .subscribe(res => {
+        this.notes = res;
+        console.log(res);
+      })
 
   }
   createNote(note: Note) {
-   //first add to DB
+    //first add to DB
     this.api.addNote(note)
-    .subscribe( res => {
-      console.log(res);
-      this.notes.push(res);
-    })
-    //then add to notes...
-    //best to add the result to the array...
-    note.id = this.notes.length;
-    // this.notes.push(note); //!!!!!!!!!
-    
-    //...or should I let the page simpy reload?
-    //maybe add a refresh database button instad?
+      .subscribe(res => {
+        console.log(res);
+        this.notes.push(res);
+      })
 
   } //fixme: no error handlign yet... also, fix backend
 

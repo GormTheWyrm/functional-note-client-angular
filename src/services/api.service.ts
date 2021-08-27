@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Note } from 'src/app/note';
 import { Observable, observable } from 'rxjs';
@@ -14,22 +14,24 @@ export class ApiService {
 
   env = environment;  //contains ApiBaseUrl
 
-getAllNote(){
-  //implement after add...
-  //: Observable<Note> //figure out type...
-  return this.http.get<Note[]>(this.env.ApiBaseUrl + "notes");
-}
-addNote(note:Note){
-  console.log("api "+ this.env.ApiBaseUrl);
-  console.log(note);
-  return this.http.post<Note>(this.env.ApiBaseUrl+ "note", note);
-  ///WIP, testme
-}
+  getAllNote() {
+    //implement after add...
+    //: Observable<Note> //figure out type...
+    return this.http.get<Note[]>(this.env.ApiBaseUrl + "notes");
+  }
+  addNote(note: Note) {
+    console.log("api " + this.env.ApiBaseUrl);
+    console.log(note);
+    return this.http.post<Note>(this.env.ApiBaseUrl + "note", note);
+    ///WIP, testme
+  }
 
-getSingleNote(id:number){
-  //implment
-}
-deleteNote(id:number){
-  //wip
-}
+  getSingleNote(id: number) {
+    //implment
+  }
+  deleteNote(id: number) {
+    //wip
+    return this.http.delete<Note>(this.env.ApiBaseUrl + "note/" + id);
+
+  }
 }
