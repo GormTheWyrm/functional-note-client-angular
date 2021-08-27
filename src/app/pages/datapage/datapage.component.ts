@@ -16,7 +16,12 @@ export class DatapageComponent implements OnInit {
   ngOnInit(): void {
 
     //load data from apiservice
+    this.api.getAllNote() //wip
+    .subscribe(res=>{
+      this.notes = res;
+    console.log(res);
 
+    })
   }
 
   deleteNote(id: number) {
@@ -30,11 +35,14 @@ export class DatapageComponent implements OnInit {
    //first add to DB
     this.api.addNote(note)
     .subscribe( res => {
-      console.log(res)
+      console.log(res);
+      this.notes.push(res);
     })
     //then add to notes...
+    //best to add the result to the array...
     note.id = this.notes.length;
-    this.notes.push(note);
+    // this.notes.push(note); //!!!!!!!!!
+    
     //...or should I let the page simpy reload?
     //maybe add a refresh database button instad?
 
