@@ -3,9 +3,11 @@
 <app-note-form (noteCreation)="createNote($event)" *ngIf="noteOpen"></app-note-form>
 <br/>
 <div *ngIf="warning" class="warning-div">
-    <p class="warning">{{warning}}</p>
+    <p class="warning">{{warning}} Click <em (click)="getAllNotes()">Retry</em> to reload data from database</p>
     <button (click)="getAllNotes()">Retry</button>
+    <!-- <p> </p> -->
     <!-- more specific button text? -->
+    <!-- retry versus... refresh... retrieve notes from database -->
 </div>
 
 <br/>

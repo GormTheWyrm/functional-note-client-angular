@@ -7,7 +7,7 @@ import { ApiService } from 'src/services/api.service';
   templateUrl: './datapage.component.html',
   styleUrls: ['./datapage.component.css']
 })
-export class DatapageComponent implements OnInit { 
+export class DatapageComponent implements OnInit {
   notes: Note[] = [];
   warning: string = "";
   noteOpen: boolean = true;
@@ -15,61 +15,41 @@ export class DatapageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNotes();
-    //load data from apiservice
-    // this.api.getAllNote() //wip
-    // .subscribe(res=>{
-    //   this.notes = res;
-    // console.log(res);
-    // }, err => {
-
-    // })//end subscribe block
   }
 
   deleteNote(id: number) {
-    //fixme 
-    console.log(id);
-    console.log("this should respond to note being deleted");
-    /// WIP
     this.api.deleteNote(id)
       .subscribe(res => {
         console.log(res); //null
-        //now need to remove data from notes...     
-        console.log(this.notes);
-      }); //id does not correspond with notes[id]... 
-    //... how to delete this or refresh/call api getall again
-
+      },err=>{
+        this.warning = "Could not delete note."; 
+        //this would quickly change to error from getAllNotes...
+      });
     //load data from apiservice
-    this.api.getAllNote() //wip
-      .subscribe(res => {
-        this.notes = res;
-        console.log(res);
-      })
-
+    this.getAllNotes();
   }
+
   createNote(note: Note) {
     //first add to DB
     this.api.addNote(note)
       .subscribe(res => {
         console.log(res);
         this.notes.push(res);
-      })
+      },err=>{
+        this.warning = "Could not post data to database.";
+      });
 
   } //fixme: no error handlign yet... also, fix backend
 
-
-getAllNotes(){
-  this.warning = "";//reset warning
-  this.api.getAllNote() //wip
-  .subscribe(res=>{
-    this.notes = res;
-
-  console.log(res);
-  }, err => {
-    console.log("error caught?");
-    console.log(err);
-    this.warning = "Could not retrieve data from database";
-  })//end subscribe block
-}
+  getAllNotes() {
+    this.warning = "";//reset warning
+    this.api.getAllNote() //wip
+      .subscribe(res => {
+        this.notes = res;
+      }, err => {
+        this.warning = "Could not retrieve data from database.";
+      })//end subscribe block
+  }
 
 
 }
