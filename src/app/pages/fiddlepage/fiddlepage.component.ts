@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Note } from 'src/app/note';
 import { LocalStorageService } from 'src/services/local-storage.service';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -26,6 +26,8 @@ export class FiddlepageComponent implements OnInit {
     this.loadFromLocalStorage();
 
   }
+  
+
   openNote() {
     console.log("open note!");
     this.noteOpen = true;
@@ -75,10 +77,16 @@ export class FiddlepageComponent implements OnInit {
 
   }
 
-deleteNote(id:number){
-// delete this.notes[id];
-this.notes.splice(id,1);
-}
+  deleteNote(id: number) {
+    // delete this.notes[id];
+    console.log(id);
+    this.notes.splice(id, 1);
+    //need to rewrite the notes ids...
+    for (let i = 0; i < this.notes.length; i++) {
+      this.notes[i].id = i; //changes IDs so delete works on next note
+
+    }
+  }
 
 
 }

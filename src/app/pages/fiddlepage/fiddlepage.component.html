@@ -8,21 +8,21 @@
         </p>
         <button id="new-note" (click)="openNote()">New Note</button>
         <button id="new-note" (click)="saveAllToLocalStorage()">Save To LocalStorage</button>
-                
-        <div *ngIf="noteOpen">
-            <label for="new-note-title">Note Title</label>
-            <br />
-            <input type="text" id="new-note-title" [(ngModel)]="newTitle">
-            <br />
-            <!-- use css to create space here -->
-            <label for="new-note-body">Note Body</label>
-            <br />
-            <textarea type="text" id="new-note-body" [(ngModel)]="newBody"> </textarea>
-            <br />
-            <button id="create-note" (click)="createNote()">Create Note</button>
-            <!-- br didnt work - add padding/margin manually --> 
-            <!-- appears to need an id for click event binding to work! -->
-        </div>
+                <!-- subcomponent -->
+                                    <div *ngIf="noteOpen">
+                                        <label for="new-note-title">Note Title</label>
+                                        <br />
+                                        <input type="text" id="new-note-title" [(ngModel)]="newTitle">
+                                        <br />
+                                        <!-- use css to create space here -->
+                                        <label for="new-note-body">Note Body</label>
+                                        <br />
+                                        <textarea type="text" id="new-note-body" [(ngModel)]="newBody"> </textarea>
+                                        <br />
+                                        <button id="create-note" (click)="createNote()">Create Note</button>
+                                        <!-- br didnt work - add padding/margin manually --> 
+                                        <!-- appears to need an id for click event binding to work! -->
+                                    </div>
         <!-- this div would be a great subcomponent- if I  -->
         <app-note *ngFor="let note of notes" [note]="note" (noteDeleted)=deleteNote($event)></app-note>
     </div>

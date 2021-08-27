@@ -1,0 +1,17 @@
+ <!-- turn this -->
+ <div >
+    <label for="new-note-title">Note Title</label>
+    <br />
+    <input type="text" id="new-note-title" [(ngModel)]="newTitle">
+    <br />
+    <!-- use css to create space here -->
+    <label for="new-note-body">Note Body</label>
+    <br />
+    <textarea type="text" id="new-note-body" [(ngModel)]="newBody"> </textarea>
+    <br />
+    <button id="create-note" (click)="createNote()">Create Note</button>
+    <!-- br didnt work - add padding/margin manually --> 
+    <!-- appears to need an id for click event binding to work! -->
+</div>
+
+<!-- into a compoenent -->

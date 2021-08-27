@@ -10,6 +10,8 @@ import { NoteComponent } from './components/note/note.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NoteFormComponent } from './components/note-form/note-form.component';
 
 //rootModule; AppModule is name by convention
 @NgModule({
@@ -20,12 +22,14 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HeaderComponent,
     FiddlepageComponent,
     NoteComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NoteFormComponent,
   ],
   //import modules - can make my own
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'fiddle', component: FiddlepageComponent},
       {path: 'data', component: DatapageComponent},
